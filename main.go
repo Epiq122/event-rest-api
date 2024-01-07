@@ -14,6 +14,7 @@ func getEvents(c *gin.Context) {
 
 func createEvent(c *gin.Context) {
 	var event models.Event
+
 	err := c.ShouldBindJSON(&event)
 
 	if err != nil {
@@ -22,6 +23,7 @@ func createEvent(c *gin.Context) {
 	}
 	event.ID = 1
 	event.UserID = 1
+	event.Save()
 	c.JSON(http.StatusCreated, gin.H{"status": "success", "event": event})
 }
 
