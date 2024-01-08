@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"robertgleason.ca/rest/db"
 	"robertgleason.ca/rest/models"
 )
 
@@ -28,7 +29,7 @@ func createEvent(c *gin.Context) {
 }
 
 func main() {
-
+	db.InitDB()
 	server := gin.Default()
 
 	server.GET("/events", getEvents)
